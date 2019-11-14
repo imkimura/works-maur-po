@@ -1,4 +1,4 @@
 # Trabalhos de Estrutura de Dados II - PO
 
-[ ] - Counting Sort
+[ ] - Counting Sort <br>
 [ ] - Tabela de Hashing
