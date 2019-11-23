@@ -1,24 +1,23 @@
 #Algoritimo de Counting Sort!
 
 def countingSort(array):
-	output = [0 for i in range(len(array))]
+	answer = [0 for i in range(len(array))]
 	count = [0 for i in range(len(array))]
-	answer = ["" for _ in array] 
 
+	#Criando vetor 'C'
 	for i in array:
 		count[i] += 1
 
+	#Usando vetor 'C' e somando com indice anterior
 	for i in range(len(array)):
 		count[i] += count[i-1]
 
+	#Adicionando no vetor de maneira organizada
 	for i in range(len(array)):
-		output[count[array[i]]-1] = array[i]
+		answer[count[array[i]]-1] = array[i]
 		count[array[i]] -= 1
 
-	for i in range(len(array)):
-		answer[i] = output[i]
-	return answer 
-
+	return answer
 
 
 
