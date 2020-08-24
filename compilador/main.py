@@ -2,9 +2,9 @@ from compiler import Compiler
 
 if __name__ == '__main__':
     
-    c = Compiler()
+    compiler = Compiler()
     
-    readCode = c.openFile()
+    readCode = compiler.openFile()
 
     readCodeLines = readCode.readlines()
        
@@ -13,14 +13,14 @@ if __name__ == '__main__':
     for line in readCodeLines:
         
         if line[0] == '#':
-            print("{:^5} | {:^6} | Ignora a linha ".format(c.countline, line[0]))
-            c.countlines()
+            print("{:^5} | {:^6} | Ignora a linha ".format(compiler.countline, line[0]))
+            compiler.countlines()
             pass
         else:            
             wordsSplited = line.split()
 
             for word in wordsSplited:
-                if c.searchMean(word):
+                if compiler.searchMean(word):
                     continue
                 else:   
                     auxword = ''                    
@@ -30,12 +30,12 @@ if __name__ == '__main__':
                         if letter == ' ':
                             continue
                         
-                        if c.searchMean(letter):
+                        if compiler.searchMean(letter):
                             auxword = ''
                             continue
 
                         auxword += letter
-                        if c.searchMean(auxword):
+                        if compiler.searchMean(auxword):
                             auxword = ''
                 
-            c.countlines()      
+            compiler.countlines()      
