@@ -18,25 +18,36 @@ if __name__ == '__main__':
             pass
         else:            
             wordsSplited = line.split()
-
+            verifyString = False
             for word in wordsSplited:
-                if compiler.searchMean(word):
+                if compiler.searchMean(word) and verifyString == False:
                     continue
                 else:
-                    
+
                     for letter in word:
                         
-                        if letter == ' ':
-                            continue
-                        
-                        if compiler.searchMean(letter):
-                            auxword = ''
-                            continue
+                        if verifyString:
+                            if letter == chr(34):
+                                print(f"{letter}")
+                                verifyString = False
+                        else:
+                            if letter == chr(34):
+                                print(f"{letter}")
+                                verifyString = True
+                                continue
+                            
+                            if letter == ' ':
+                                continue
 
-                        auxword += letter
+                            
+                            if compiler.searchMean(letter):
+                                auxword = ''
+                                continue
 
-                        if compiler.searchMean(auxword):
-                            auxword = ''
+                            auxword += letter
+
+                            if compiler.searchMean(auxword):
+                                auxword = ''
 
                     if auxword:
                         print("{:^5} | {:^6} | {} ".format(compiler.countline, auxword, 'Variável'))
