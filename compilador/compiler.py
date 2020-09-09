@@ -21,4 +21,4 @@ class Compiler:
             
             print("{:^5} | {:^6} | {} ".format(self.countline, searchWord, self.listmeans[searchWord]))
             
-            return True      
+            return True   
