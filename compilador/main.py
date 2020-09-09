@@ -22,14 +22,11 @@ if __name__ == '__main__':
             for word in wordsSplited:
                 if compiler.searchMean(word):
                     continue
-                else:   
-                    #auxword = ''                    
+                else:
                     
                     for letter in word:
                         
                         if letter == ' ':
-                            if auxword:
-                                print(f"{auxword} - word1")
                             continue
                         
                         if compiler.searchMean(letter):
@@ -40,10 +37,9 @@ if __name__ == '__main__':
 
                         if compiler.searchMean(auxword):
                             auxword = ''
-                        
 
-                        
-                        #print(f"{letter} - letter")
-                        print(f"{auxword} - word2")
-                
-            compiler.countlines()      
+                    if auxword:
+                        print("{:^5} | {:^6} | {} ".format(compiler.countline, auxword, 'Variável'))
+                    auxword = ''
+
+            compiler.countlines()

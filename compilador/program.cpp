@@ -9,6 +9,6 @@ main()
 
     a += 5;
 
-    printf(“Valores a = %d e b = %d”, a, b);
+    printf("Valores a = %d e b = %d", a, b);
 
 }
