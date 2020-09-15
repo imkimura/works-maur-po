@@ -30,5 +30,10 @@ if __name__ == "__main__":
 
     print(v[0].edges[0].vertexDestiny.vertexName)
 
-    
+# TODO
+# a) uma função que dados 2 vértices como parâmetros, verifique se há caminho entre eles;
 
+# b) outra função que dado um vértice (origem e tb destino), verifique se há um ciclo no grafo. Considere que para existir um 
+#    ciclo deve sair de um vértice, visitar pelo menos outro vértice e, retornar ao vértice de origem.
+
+# c) criar funçao pra verificar se é grafo euleriano
