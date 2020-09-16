@@ -3,11 +3,9 @@ from compiler import Compiler
 if __name__ == '__main__':
     auxword = '' 
     compiler = Compiler()
-    
     readCode = compiler.openFile()
-
     readCodeLines = readCode.readlines()
-       
+    
     print("{:^5} | {:^6} | {:^22} ".format("Line","Token","Mean"))
     
     for line in readCodeLines:
@@ -20,7 +18,7 @@ if __name__ == '__main__':
             wordsSplited = line.split()
             verifyString = False
             for word in wordsSplited:
-                if compiler.searchMean(word) and verifyString == False:
+                if verifyString == False and compiler.searchMean(word):
                     continue
                 else:
 

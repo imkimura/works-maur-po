@@ -51,13 +51,13 @@
     "\"": "Simbolo especial",
     "*": "Simbolo especial",
     "%": "Simbolo especial",
-    "++": "Símbolo Composto",
-    "--": "Símbolo Composto",
-    ">=": "Símbolo Composto",
-    "<=": "Símbolo Composto",
-    "+=": "Símbolo Composto",
-    "-=": "Símbolo Composto",
-    "*=": "Símbolo Composto",
-    "/=": "Símbolo Composto",
-    "%=": "Símbolo Composto"
+    "++": "Simbolo Composto",
+    "--": "Simbolo Composto",
+    ">=": "Simbolo Composto",
+    "<=": "Simbolo Composto",
+    "+=": "Simbolo Composto",
+    "-=": "Simbolo Composto",
+    "*=": "Simbolo Composto",
+    "/=": "Simbolo Composto",
+    "%=": "Simbolo Composto"
 }
