@@ -13,6 +13,7 @@ class Vertex:
     def __init__(self, vertexName):
         self.vertexName = vertexName
         self.edges = []
+        self.edgesIN = []
     
     def __str__(self):
         return '{} - Vértice' .format(self.vertexName)
@@ -46,8 +47,6 @@ def verifyPath(orign, destiny, edgesPassed):
             if verifyPath(edge.vertexDestiny, destiny, edgesPassed):
                 print('ok')
                 return True
-            
-    print('deu ruim no fim')
     return False
 
 def verifyCicle(orign, destiny):
@@ -66,12 +65,13 @@ def verifyCicle(orign, destiny):
     print('mas nao é cicle')
     return False
 
-def isEulerian(vertex): 
-    odd = 0
-    for i in range(vertex): 
-        if len(vertex[i].edge) % 2 !=0: #verifica se algum vertice tem grau impar mas precisar ver quantas arestas tem em um vertice
-            return print('nao eh euleriano')
-    return print('eh euleriano')
+def isEulerian(graph): 
+
+    for i in range(len(graph)): 
+        print(len(graph[i].edges))
+        if len(graph[i].edges) % 2 !=0: #verifica se algum vertice tem grau impar mas precisar ver quantas arestas tem em um vertice
+            return False
+    return True
 
 
 if __name__ == "__main__":
@@ -80,30 +80,36 @@ if __name__ == "__main__":
 
     v.append(Vertex('A'))
     v.append(Vertex('B'))
-    v.append(Vertex('D'))
     v.append(Vertex('C'))
+    v.append(Vertex('D'))
     v.append(Vertex('E'))
 
-    v[0].setNewEdgeInVertex('1', v[1]) # A - B
-    v[1].setNewEdgeInVertex('3', v[2]) # B - D
-    v[2].setNewEdgeInVertex('4', v[3]) # D - C
-    v[3].setNewEdgeInVertex('2', v[0]) # C - A
+    v[0].setNewEdgeInVertex('1', v[3])
+    v[1].setNewEdgeInVertex('3', v[0])
+    v[2].setNewEdgeInVertex('4', v[1])
+    v[0].setNewEdgeInVertex('2', v[2])
+    v[3].setNewEdgeInVertex('2', v[4])
+    v[4].setNewEdgeInVertex('2', v[0])
+
     # v[4].setNewEdgeInVertex('5', v[2]) # E - D
-    v[2].setNewEdgeInVertex('6', v[4]) # D - E  
+    # v[2].setNewEdgeInVertex('6', v[4]) # D - E
 
-    if verifyPath(v[0], v[4], edgesPassed): # A - E
-        for p in edgesPassed:
-            print(p) 
-    else:
-        print('--------')
-        for p in edgesPassed:
-            print(p)
+    # if verifyPath(v[0], v[4], edgesPassed): # A - E
+    #     for p in edgesPassed:
+    #         print(p) 
+    # else:
+    #     print('--------')
+    #     for p in edgesPassed:
+    #         print(p)
     
-    if verifyCicle(v[0], v[4]): # A - E
-        for p in edgesPassed:
-            print(p) 
+    # if verifyCicle(v[0], v[4]): # A - E
+    #     for p in edgesPassed:
+    #         print(p) 
 
-    isEulerian(v)
+    if isEulerian(v):
+        print('eh euleriano')
+    else:
+        print('nao eh euleriano')
 
 # TODO
 # a) uma função que dados 2 vértices como parâmetros, verifique se há caminho entre eles;
@@ -112,3 +118,5 @@ if __name__ == "__main__":
 #    ciclo deve sair de um vértice, visitar pelo menos outro vértice e, retornar ao vértice de origem.
 
 # c) criar funçao pra verificar se é grafo euleriano
+
+# https://www.geeksforgeeks.org/euler-circuit-directed-graph/?ref=lbp 
