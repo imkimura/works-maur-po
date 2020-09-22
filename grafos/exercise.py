@@ -66,6 +66,13 @@ def verifyCicle(orign, destiny):
     print('mas nao é cicle')
     return False
 
+def isEulerian(vertex): 
+    odd = 0
+    for i in range(vertex): 
+        if len(vertex[i].edge) % 2 !=0: #verifica se algum vertice tem grau impar mas precisar ver quantas arestas tem em um vertice
+            return print('nao eh euleriano')
+    return print('eh euleriano')
+
 
 if __name__ == "__main__":
     v = []
@@ -95,6 +102,8 @@ if __name__ == "__main__":
     if verifyCicle(v[0], v[4]): # A - E
         for p in edgesPassed:
             print(p) 
+
+    isEulerian(v)
 
 # TODO
 # a) uma função que dados 2 vértices como parâmetros, verifique se há caminho entre eles;
