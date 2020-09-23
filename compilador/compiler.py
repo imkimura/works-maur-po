@@ -5,7 +5,7 @@ class Compiler:
         self.fileName = fileName
         self.countline = 1
         self.listmeans = self.initDictWords()
-    
+        self.stack = []
     def openFile(self):
         return open(self.fileName, 'r', encoding="utf8")     
 
@@ -20,5 +20,5 @@ class Compiler:
         if searchWord in self.listmeans:
             
             print("{:^5} | {:^6} | {} ".format(self.countline, searchWord, self.listmeans[searchWord]))
-            
+            self.stack.append(searchWord) #unfinished stack method
             return True   
