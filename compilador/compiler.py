@@ -42,6 +42,3 @@ class Compiler:
                     return First(firstsymbol)
                 else:
                     #unfinished again    
-
-
-
