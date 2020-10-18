@@ -26,17 +26,14 @@ if __name__ == '__main__':
                         
                         if verifyString:
                             if letter == chr(34):
-                                print(f"{letter}")
                                 verifyString = False
                         else:
                             if letter == chr(34):
-                                print(f"{letter}")
                                 verifyString = True
                                 continue
                             
                             if letter == ' ':
                                 continue
-
                             
                             if compiler.searchMean(letter):
                                 auxword = ''

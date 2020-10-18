@@ -16,7 +16,6 @@ stack = ["$", "E"]
 buffer = input("Cadeia: ")
 buffer += ' $'
 buffer = buffer.split(" ")
-print(syntaxlist)
 
 print('Stack: ',stack)
 
@@ -39,7 +38,7 @@ while len(stack) != 1: #while stack is not empty
             stack.pop()
         else:
             #Error, token in buffer is not the same as in stack
-            print("ERROR 1")
+            print("ERROR")
             break
         print('Stack: ',stack)
 
@@ -51,7 +50,7 @@ while len(stack) != 1: #while stack is not empty
         print('')
 
         if action == 'ERROR':
-            print('ERROR 2')
+            print('ERROR')
             break
         stack.pop()
 
@@ -59,13 +58,13 @@ while len(stack) != 1: #while stack is not empty
             if symbol != 'LAMBDA': #char 'λ' was having problems, replaced with 'LAMBDA'
                 stack.append(symbol)
 
-            print('Stack: ',stack)
+        print('Stack: ',stack)
         
     else:
         #Error, token wasnt recognized 
-        print("ERROR 3")
+        print("ERROR")
         break
 
 if buffer[0] == '$':
     print('Buffer: ', buffer)
-    print('Regra: SUCESSO')
+    print('Action: SUCCESS')
