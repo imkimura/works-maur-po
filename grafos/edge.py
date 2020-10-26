@@ -7,4 +7,4 @@ class Edge:
         return self.edgeName
 
     def __str__(self):
-        return '{} - Aresta' .format(self.edgeName)
+        return '{}' .format(self.edgeName)

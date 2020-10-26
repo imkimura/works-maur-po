@@ -1,101 +1,54 @@
 from edge import Edge
 from vertex import Vertex
-
-
-def verifyPath(orign, destiny, edgesPassed):
-    
-    if len(orign.edges) == 0:
-        print('deu ruim')
-        return False
-
-    for edge in orign.edges:
-        if len(edgesPassed) > 0:
-            if edge not in edgesPassed:
-                edgesPassed.append(edge)
-            else:
-                print('ja passei aq')
-                return False
-        else:
-            edgesPassed.append(edge)
-
-        if edge.vertexDestiny == destiny:
-            print('{} <---> {}' .format(orign.vertexName, edge.vertexDestiny))   
-            print('deu bom aqui')
-            return True
-        else:         
-            print('{} <---> {}' .format(orign.vertexName, edge.vertexDestiny))   
-            if verifyPath(edge.vertexDestiny, destiny, edgesPassed):
-                print('ok')
-                return True
-    return False
-
-def verifyCicle(orign, destiny):
-    
-    if len(orign.edges) == 0:
-        print('deu ruim')
-        return False
-
-    edgesPassed = []
-    if verifyPath(orign, destiny, edgesPassed):
-        print('é path')
-        edgesPassed = []
-        if verifyPath(destiny, orign, edgesPassed):            
-            print('e tambem é cicle')
-            return True            
-    print('mas nao é cicle')
-    return False
-
-def isEulerian(graph): 
-
-    for i in range(len(graph)): 
-        print(len(graph[i].edges))
-        if len(graph[i].edges) % 2 !=0: #verifica se algum vertice tem grau impar mas precisar ver quantas arestas tem em um vertice
-            return False
-    return True
+import graph as gp
 
 
 if __name__ == "__main__":
-    v = []
+    graph = []
     edgesPassed = []
+    fila = []
 
-    v.append(Vertex('A')) #0
-    v.append(Vertex('B')) #1
-    v.append(Vertex('C')) #2
-    v.append(Vertex('D')) #3
-    v.append(Vertex('E')) #4
-    v.append(Vertex('F')) #5
-    v.append(Vertex('G')) #6
-    v.append(Vertex('H')) #7
-    v.append(Vertex('L')) #8
-    v.append(Vertex('J')) #9
-    v.append(Vertex('K')) #10
-    v.append(Vertex('M')) #11
+    graph.append(Vertex('A')) #0
+    graph.append(Vertex('B')) #1
+    graph.append(Vertex('C')) #2
+    graph.append(Vertex('D')) #3
 
-    v[0].setNewEdgeInVertex('1', v[1])
-    v[1].setNewEdgeInVertex('1', v[2])
-    v[2].setNewEdgeInVertex('1', v[3])
-    v[2].setNewEdgeInVertex('1', v[3])
-    v[2].setNewEdgeInVertex('1', v[3])
+    graph[0].setNewEdgeInVertex('AC', graph[2])
+    graph[2].setNewEdgeInVertex('CB', graph[1])
+    graph[1].setNewEdgeInVertex('BD', graph[3])
+    graph[3].setNewEdgeInVertex('DC', graph[2])
+    graph[2].setNewEdgeInVertex('CA', graph[0])
+    graph[0].setNewEdgeInVertex('AB', graph[1])
+    graph[1].setNewEdgeInVertex('BA', graph[0])
 
-    # v[4].setNewEdgeInVertex('5', v[2]) # E - D
-    # v[2].setNewEdgeInVertex('6', v[4]) # D - E
-
-    # if verifyPath(v[0], v[4], edgesPassed): # A - E
-    #     for p in edgesPassed:
-    #         print(p) 
-    # else:
-    #     print('--------')
-    #     for p in edgesPassed:
-    #         print(p)
+    if gp.verifyPath(graph[0], graph[3], edgesPassed): # A - D   
+        print('\n-------- tem caminho ---------\n')
+        print('{} <---> {}' .format(graph[0], graph[3]))        
+        for edge in edgesPassed:
+            print('{}' .format(edge))   
+    else:
+        print('não tem caminho')
     
-    # if verifyCicle(v[0], v[4]): # A - E
-    #     for p in edgesPassed:
-    #         print(p) 
+    edgesPassed = []
+    
+    if gp.verifyCicle(graph[0], graph[0]): 
+        print('\n-------- é hamiltoniano ---------\n')
+        gp.showPathHamilton(graph)
 
-    if isEulerian(v):
-        print('eh euleriano')
+    if gp.isEulerian(graph):
+        print('\n-------- é euleriano ---------\n')
+        gp.showPathEulerian(graph)
     else:
         print('nao eh euleriano')
+
+    print('\n-------- busca largura ---------\n')
+    gp.buscaLargura(fila, graph, edgesPassed)
+
+    edgesPassed = []
+    fila = []
+
+    print('\n-------- busca profundidade ---------\n')
+    gp.buscaProfundidade(fila, graph, edgesPassed)
 
 # TODO
 # a) uma função que dados 2 vértices como parâmetros, verifique se há caminho entre eles;
@@ -106,5 +59,7 @@ if __name__ == "__main__":
 # c) criar funçao pra verificar se é grafo euleriano e criar array com grafo
 
 # d) hamilton
+
+# e) busca por largura e busca por profundidade
 
 # https://www.geeksforgeeks.org/euler-circuit-directed-graph/?ref=lbp 

@@ -8,8 +8,11 @@ class Vertex:
         self.edgesIN = []
     
     def __str__(self):
-        return '{} - Vértice' .format(self.vertexName)
+        return '{}' .format(self.vertexName)
     
     def setNewEdgeInVertex(self, edgeName, destiny):
         edge = Edge(edgeName, destiny)
+        
+        destiny.edgesIN.append(self)
+        
         self.edges.append(edge)    
