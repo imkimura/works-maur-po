@@ -1,26 +1,6 @@
-class Edge:
-    def __init__(self, edgeName, vertexDestiny):        
-        self.edgeName = edgeName
-        self.vertexDestiny = vertexDestiny
+from edge import Edge
+from vertex import Vertex
 
-    def getEdge(self):
-        return self.edgeName
-
-    def __str__(self):
-        return '{} - Aresta' .format(self.edgeName)
-
-class Vertex:
-    def __init__(self, vertexName):
-        self.vertexName = vertexName
-        self.edges = []
-        self.edgesIN = []
-    
-    def __str__(self):
-        return '{} - Vértice' .format(self.vertexName)
-    
-    def setNewEdgeInVertex(self, edgeName, destiny):
-        edge = Edge(edgeName, destiny)
-        self.edges.append(edge)    
 
 def verifyPath(orign, destiny, edgesPassed):
     
@@ -78,18 +58,24 @@ if __name__ == "__main__":
     v = []
     edgesPassed = []
 
-    v.append(Vertex('A'))
-    v.append(Vertex('B'))
-    v.append(Vertex('C'))
-    v.append(Vertex('D'))
-    v.append(Vertex('E'))
+    v.append(Vertex('A')) #0
+    v.append(Vertex('B')) #1
+    v.append(Vertex('C')) #2
+    v.append(Vertex('D')) #3
+    v.append(Vertex('E')) #4
+    v.append(Vertex('F')) #5
+    v.append(Vertex('G')) #6
+    v.append(Vertex('H')) #7
+    v.append(Vertex('L')) #8
+    v.append(Vertex('J')) #9
+    v.append(Vertex('K')) #10
+    v.append(Vertex('M')) #11
 
-    v[0].setNewEdgeInVertex('1', v[3])
-    v[1].setNewEdgeInVertex('3', v[0])
-    v[2].setNewEdgeInVertex('4', v[1])
-    v[0].setNewEdgeInVertex('2', v[2])
-    v[3].setNewEdgeInVertex('2', v[4])
-    v[4].setNewEdgeInVertex('2', v[0])
+    v[0].setNewEdgeInVertex('1', v[1])
+    v[1].setNewEdgeInVertex('1', v[2])
+    v[2].setNewEdgeInVertex('1', v[3])
+    v[2].setNewEdgeInVertex('1', v[3])
+    v[2].setNewEdgeInVertex('1', v[3])
 
     # v[4].setNewEdgeInVertex('5', v[2]) # E - D
     # v[2].setNewEdgeInVertex('6', v[4]) # D - E
@@ -117,6 +103,8 @@ if __name__ == "__main__":
 # b) outra função que dado um vértice (origem e tb destino), verifique se há um ciclo no grafo. Considere que para existir um 
 #    ciclo deve sair de um vértice, visitar pelo menos outro vértice e, retornar ao vértice de origem.
 
-# c) criar funçao pra verificar se é grafo euleriano
+# c) criar funçao pra verificar se é grafo euleriano e criar array com grafo
+
+# d) hamilton
 
 # https://www.geeksforgeeks.org/euler-circuit-directed-graph/?ref=lbp 
