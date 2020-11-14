@@ -20,3 +20,7 @@ class Compiler:
             
             print("{:^5} | {:^6} | {} ".format(self.countline, searchWord, self.listmeans[searchWord]))
             return True
+    
+    def searchWord(self, word):
+        if word in self.listmeans:
+            return self.listmeans[word]

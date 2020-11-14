@@ -51,6 +51,7 @@
     "\"": "Simbolo especial",
     "*": "Simbolo especial",
     "%": "Simbolo especial",
+    "&": "Simbolo especial",
     "++": "Simbolo Composto",
     "--": "Simbolo Composto",
     ">=": "Simbolo Composto",
