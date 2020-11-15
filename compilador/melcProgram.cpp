@@ -6,14 +6,14 @@ main () {
 
     A = 1 ;
     S = 0 ;
-    while (A<=100)
+    while ( A <= 100 )
 
     {
-        scanf ("%d", &NUM) ;
-        if (NUM > 0)
+        scanf ( "%d", &NUM ) ;
+        if ( NUM > 0 )
             S = S + NUM ;
         A = A + 1 ;
 
     }
-    printf ("%d", S) ;
+    printf ( "%d", S ) ;
 }

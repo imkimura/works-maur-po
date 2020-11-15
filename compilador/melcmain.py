@@ -1,7 +1,7 @@
 from compiler import Compiler
 from melc import Melc
 
-code = open('testemelcProgram.cpp', 'r', encoding="utf8")
+code = open('melcProgram.cpp', 'r', encoding="utf8")
 compiler = Compiler()
 melc = Melc()
 
