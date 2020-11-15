@@ -1,46 +1,25 @@
-code = open('melcProgram.cpp', 'r', encoding="utf8")
+from compiler import Compiler
+from melc import Melc
+
+code = open('testemelcProgram.cpp', 'r', encoding="utf8")
 compiler = Compiler()
 melc = Melc()
 
 for line in code.readlines():
     if line[0] == '#':
-            pass
-        else:            
-            wordsSplited = line.split()
-            verifyString = False
-            for word in wordsSplited:
-                if verifyString == False and mean = compiler.searchWord(word):
-                    melc.checkToken(word, mean)
-                    continue
-                else:
+        pass
+    else:           
+        for word in line.split():
+            mean = compiler.searchWord(word)
+            if mean != False:
+                if mean == "Palavras Reservadas":
+                    melc.reservedWord(line)
+                elif mean == "Simbolo especial":
+                    melc.specialSymbol(line)
+                elif mean == "Simbolo Composto":
+                    melc.multiSymbol(line)
+                break
+            else:
+                melc.variable(line)
+                break
 
-                    for letter in word:
-                        
-                        if verifyString:
-                            if letter == chr(34):
-                                verifyString = False
-                        else:
-                            if letter == chr(34):
-                                verifyString = True
-                                continue
-                            
-                            if letter == ' ':
-                                continue
-                            
-                            if mean = compiler.searchWord(letter):
-                                melc.checkToken(letter, mean)
-                                auxword = ''
-                                continue
-
-                            auxword += letter
-
-                            if compiler.searchWord(auxword):
-                                melc.checkToken(auxword, mean)
-                                auxword = ''
-
-                    if auxword:
-                        melc.checkToken(auxword, 'Variavel')
-
-                    auxword = ''
-
-            compiler.countlines()

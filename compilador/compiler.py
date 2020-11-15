@@ -24,3 +24,5 @@ class Compiler:
     def searchWord(self, word):
         if word in self.listmeans:
             return self.listmeans[word]
+        else:
+            return False

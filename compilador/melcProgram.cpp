@@ -1,19 +1,19 @@
 #include <stdio.h>
 
-main() {
+main () {
 
-    int A, S, NUM;
+    int A, S, NUM ;
 
-    A = 1;
-    S = 0;
+    A = 1 ;
+    S = 0 ;
     while (A<=100)
 
     {
-        scanf("%d", &NUM);
+        scanf ("%d", &NUM) ;
         if (NUM > 0)
-            S = S + NUM;
-        A = A + 1;
+            S = S + NUM ;
+        A = A + 1 ;
 
     }
-    printf ("%d", S);
+    printf ("%d", S) ;
 }
