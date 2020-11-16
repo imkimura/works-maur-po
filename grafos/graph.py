@@ -1,5 +1,6 @@
 from edge import Edge
 from vertex import Vertex
+from random import randint
 
 
 def verifyPath(orign, destiny, edgesPassed):
@@ -123,3 +124,63 @@ def buscaProfundidade(fila, graph, edgesPassed):
         fila, edgesPassed = sucessor(vertex, fila, edgesPassed)
 
         count += 1
+
+def shortPathDijkstra(start, destiny, graph):
+    vertex = start
+    
+    markedVertex = []
+    previous = [None] * len(graph)
+    accumulatedDistances = [float('inf')] * len(graph)     
+    
+    while(verifyPathFound(vertex, destiny)):
+        
+        previous, accumulatedDistances, markedVertex = exploreVertex(vertex, previous, accumulatedDistances, markedVertex, graph)
+        
+        vertex = nextVertexExplore(accumulatedDistances, markedVertex, graph)
+    
+    print(accumulatedDistances)
+    print(previous)
+
+def verifyPathFound(vertex, destiny):    
+    if vertex == destiny:
+        return False
+    else: 
+        return True
+
+def nextVertexExplore(accumulatedDistances, markedVertex, graph):
+    minValue = float('inf')
+    
+    for idx, distance in enumerate(accumulatedDistances):
+        if (distance < minValue) and (graph[idx] not in markedVertex):
+            minValue = distance
+            vertex = graph[idx]
+            
+    return vertex
+
+def exploreVertex(vertex, previous, accumulatedDistances, markedVertex, graph):    
+    print(f'\n------------ \niniciando função com {vertex.vertexName}...\n')
+        
+    idxVertex = graph.index(vertex)
+    
+    for edge in vertex.edges:
+        idxVertexDestiny = graph.index(edge.vertexDestiny)
+        
+        if edge.vertexDestiny in markedVertex:
+            pass
+        else:
+            sumPrevious = accumulatedDistances[idxVertex]
+            
+            if accumulatedDistances[idxVertex] == float('inf') : sumPrevious = 0
+            
+            sumCost = edge.cost + sumPrevious
+            
+            if accumulatedDistances[idxVertexDestiny] > (sumCost):
+
+                accumulatedDistances[idxVertexDestiny] = sumCost
+                previous[idxVertexDestiny] = vertex.vertexName            
+
+        markedVertex.append(vertex)    
+           
+    return previous, accumulatedDistances, markedVertex
+    
+    

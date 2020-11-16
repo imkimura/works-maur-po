@@ -1,7 +1,8 @@
 class Edge:
-    def __init__(self, edgeName, vertexDestiny):        
+    def __init__(self, edgeName, vertexDestiny, cost):        
         self.edgeName = edgeName
         self.vertexDestiny = vertexDestiny
+        self.cost = cost
 
     def getEdge(self):
         return self.edgeName

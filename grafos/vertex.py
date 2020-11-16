@@ -10,8 +10,8 @@ class Vertex:
     def __str__(self):
         return '{}' .format(self.vertexName)
     
-    def setNewEdgeInVertex(self, edgeName, destiny):
-        edge = Edge(edgeName, destiny)
+    def setNewEdgeInVertex(self, edgeName, destiny, cost):
+        edge = Edge(edgeName, destiny, cost)
         
         destiny.edgesIN.append(self)
         
