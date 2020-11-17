@@ -2,6 +2,7 @@
 class Melc:
     def __init__(self):
         self.inIf = False
+        self.inElse = False
         self.inWhile = False
         self.inMain = True
 
@@ -9,6 +10,11 @@ class Melc:
         if self.inIf == True:
             print("L3 NADA")
             self.inIf = False
+
+    def changeElseState(self):
+        if self.inElse == True:
+            print("L4 NADA")
+            self.inElse = False
 
     def changeWhileState(self):
         if self.inWhile == True:
@@ -32,13 +38,15 @@ class Melc:
                 print("CRCT 1")
                 print("SOMA")
                 print("ARMZ 0")
-                self.changeIfState()
+                self.changeElseState()
+                
             else:
                 print("CRVL 1")
                 print("CRVL 2")
                 print("SOMA")
                 print("ARMZ 1")
-                self.changeIfState()
+                self.changeElseState()
+                
 
     def reservedWord(self, line):
         wordSplited = line.split()
@@ -65,6 +73,10 @@ class Melc:
             if wordSplited[3] == '>':
                 print("CMMA")
             print("DSVF L3")
+        elif wordSplited[0] == 'else':
+            self.inElse = True
+            print("DSVS L4")
+            self.changeIfState()
         elif wordSplited[0] == 'while':
             self.inWhile = True
             print("L1 NADA")

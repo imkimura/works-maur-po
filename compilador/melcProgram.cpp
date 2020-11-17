@@ -12,7 +12,8 @@ main () {
         scanf ( "%d", &NUM ) ;
         if ( NUM > 0 )
             S = S + NUM ;
-        A = A + 1 ;
+        else
+            A = A + 1 ;
 
     }
     printf ( "%d", S ) ;
