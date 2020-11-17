@@ -138,8 +138,25 @@ def shortPathDijkstra(start, destiny, graph):
         
         vertex = nextVertexExplore(accumulatedDistances, markedVertex, graph)
     
-    print(accumulatedDistances)
-    print(previous)
+    printPathDijkstra(accumulatedDistances, previous, graph, 10)
+
+def printPathDijkstra(accumulatedDistances, previous, graph, index):
+    
+    if previous[index] is None:
+        return True
+    
+    print('{:^6} || {:^6}' .format(accumulatedDistances[index], previous[index]))
+    
+    for indexV, vertex in enumerate(graph):        
+        if vertex.vertexName == previous[index]:            
+            index = indexV
+            break
+    
+    printPathDijkstra(accumulatedDistances, previous, graph, index)
+
+    return True
+    
+    
 
 def verifyPathFound(vertex, destiny):    
     if vertex == destiny:
